@@ -1,3 +1,14 @@
-<body style="margin:0;display:flex;align-items:center;justify-content:center;height:100vh;font-family:sans-serif">
-  <audio src="https://raw.githubusercontent.com/rafaellutfi5-cmyk/musik/main/AUD-20261106-WA0031.mp3" autoplay loop controls></audio>
+<body style="margin:0;display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;font-family:sans-serif;background:#111;color:#fff">
+  <p id="info">🎵 Memutar musik...</p>
+  <audio id="musik" src="https://raw.githubusercontent.com/rafaellutfi5-cmyk/musik/main/AUD-20261106-WA0031.mp3" loop controls></audio>
+  <script>
+    const a = document.getElementById("musik");
+    const info = document.getElementById("info");
+    a.play().catch(() => {
+      info.textContent = "👆 Sentuh layar untuk memutar";
+      ["click","touchstart"].forEach(e =>
+        document.addEventListener(e, () => { a.play(); info.textContent = "🎵 Memutar musik..."; }, { once:true })
+      );
+    });
+  </script>
 </body>
